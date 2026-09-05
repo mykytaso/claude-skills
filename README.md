@@ -1,4 +1,4 @@
-# ClaudeSkills
+# Claude Skills
 
 Custom Claude Code skills made by [Mykyta Soloviov](https://github.com/mykytaso).
 
@@ -35,11 +35,11 @@ Example:
 ```
 
 
-## About skills.sh
+## About `skills.sh`
 
-👉 The `skills.sh` only manages skills from this repo. <br>
-👉 It never touches or deletes any other skill in `~/.claude/skills`. <br>
-👉 It shows the folders, and asks first, before it deletes.
+- The `skills.sh` only manages skills from this repo.
+- It never touches or deletes any other skill in `~/.claude/skills`.
+- It shows the folders, and asks first, before it deletes.
 
 ```
 ./skills.sh              # install the skills
