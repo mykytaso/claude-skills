@@ -13,15 +13,7 @@ Custom Claude Code skills made by [Mykyta Soloviov](https://github.com/mykytaso)
 
 Call each skill by its name, for example `/wtf`.
 
-```
-./skills.sh              # install the skills, and refresh the installed ones
-./skills.sh --update     # the same, and also remove a skill that this repo deleted
-./skills.sh --uninstall  # remove all skills of this repo
-```
 
-The script only manages skills from this repo. <br>
-It never touches or deletes any other skill in `~/.claude/skills`. <br>
-It shows the folders, and asks first, before it deletes.
 
 
 ## Skills
@@ -32,6 +24,20 @@ It shows the folders, and asks first, before it deletes.
 | `comments-remove`  | Deletes the comments from code.                              |
 | `comments-rewrite` | Deletes the comments, then writes new ones.                  |
 | `wtf`              | Explains the last answer again in simple words.              |
+
+
+
+## `skills.sh`
+
+> The `skills.sh` only manages skills from this repo. <br>
+> It never touches or deletes any other skill in `~/.claude/skills`. <br>
+> It shows the folders, and asks first, before it deletes.
+
+```
+./skills.sh              # install the skills
+./skills.sh --update     # mirror the skills from this repo to `~/.claude/skills`
+./skills.sh --uninstall  # remove all skills of this repo
+```
 
 
 ## License
