@@ -25,7 +25,7 @@ Call each skill by its name, for example `/wtf`.
 | `comments-rewrite` | File - Directory - Code Block | Deletes the comments, then writes new ones.     |
 | `wtf`              | None                          | Explains the last answer again in simple words. |
 
-**Examples:**
+*Examples:*
 ```
 /comments-add Sources/Model.swift     # one file
 /comments-add Sources/Views           # each source file in the directory
