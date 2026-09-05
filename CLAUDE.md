@@ -10,7 +10,9 @@ This repository holds custom Claude Code skills (slash commands). It is not an a
 
 Each skill lives at `skills/<skill-name>/SKILL.md`. `update-skills` copies each skill folder straight into `~/.claude/skills/<skill-name>/`, so once installed each skill is invoked by its own name, for example `/wtf`. `~/.claude/skills` is a shared folder — it can hold skills from other sources too. `update-skills` tracks which skill names belong to this repo in a manifest file at `~/.claude/.myk-installed-skills`, so it can remove a skill that was deleted from this repo without ever touching a skill that came from somewhere else. Current skills:
 
-- `comments` — adds, removes, or rewrites comments in code. One skill, three modes: `/comments add|remove|rewrite <target>`.
+- `comments-add` — adds explanatory comments to code.
+- `comments-remove` — deletes the comments, and keeps every comment that a tool or the compiler reads.
+- `comments-rewrite` — deletes the comments, then writes new ones.
 - `uninstall-skills` — removes this repo's skills from `~/.claude/skills` and deletes the manifest.
 - `update-skills` — makes `~/.claude/skills` mirror this repo's `skills` folder, without touching skills from elsewhere.
 - `validate-skills` — checks every `SKILL.md` in this repo against the conventions below.
@@ -20,8 +22,8 @@ Manifest format (`~/.claude/.myk-installed-skills`):
 
 ```
 # source: /path/to/ClaudeSkills/skills
-comments
-update-skills
+comments-add
+comments-remove
 ...
 ```
 
@@ -52,12 +54,12 @@ Frontmatter:
 
 What those two fields actually do: `allowed-tools` **pre-approves** tools, so they do not raise a permission prompt. It does **not** restrict the model to that list. To stop a skill from touching files, list the write tools in `disallowed-tools` (this is what `wtf` does).
 
-**Rule for this repo: pre-approve read-only tools only.** `Edit`, `Write`, and `Bash` never go in `allowed-tools`, even when the skill needs them — `comments` edits files, `update-skills` runs `rsync --delete`, `uninstall-skills` runs `rm -rf`, and none of them pre-approve it. Every change then stops and asks, so in manual mode you see the diff or the command and allow it by hand. A skill still gets the tool; it only loses the silent approval.
+**Rule for this repo: pre-approve read-only tools only.** `Edit`, `Write`, and `Bash` never go in `allowed-tools`, even when the skill needs them — the comment skills edit files, `update-skills` runs `rsync --delete`, `uninstall-skills` runs `rm -rf`, and none of them pre-approve it. Every change then stops and asks, so in manual mode you see the diff or the command and allow it by hand. A skill still gets the tool; it only loses the silent approval.
 
 Body sections, in this order, as they apply:
 
 - `Precondition` — validate the input. Give an exact `Usage: ...` message and stop when the input is missing or wrong. Never guess. A path that does not exist is an error, not a search term.
-- `Task` — numbered rules. Use `Step A/B/C` subsections when a mode selects which steps run.
+- `Task` — numbered rules. Use named subsections (`Find the target`, `Write the comments`) or `Step 1/2/3` when the order matters.
 - `Limits` — what the skill must never change.
 - `Output` — which files the skill may write.
 - `Report` — what to tell the user afterwards.
@@ -67,5 +69,5 @@ Other rules:
 - All instructional text is written in ASD-STE100 Simplified Technical English: short sentences, one thought per sentence, plain words.
 - A skill that walks a directory must skip hidden, build, dependency, and generated files, and must ask before changing more than 10 files.
 - A skill that deletes anything must check the path, show the list, and ask first.
-- Keep a rule in one file. Do not copy the same rule into two skills — that is why the three comment skills became one `comments` skill with modes.
+- The three comment skills repeat their shared rules on purpose: three plain commands beat one command with a mode flag. The cost is drift. `/validate-skills` rule 18 compares the shared parts, so change a shared rule in all three files, in the same words.
 - End every file with a newline.

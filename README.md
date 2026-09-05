@@ -19,26 +19,27 @@ Custom Claude Code skills made by [Mykyta Soloviov](https://github.com/mykytaso)
 
 ## Skills
 
-| Skill              | Description                                                    |
-|--------------------|----------------------------------------------------------------|
-| `comments`         | Adds, removes, or rewrites the comments in code.               |
-| `uninstall-skills` | Removes the skills of this repo from `~/.claude/skills`.        |
-| `update-skills`    | Applies updates to the skills from this repo.                   |
-| `validate-skills`  | Checks each `SKILL.md` in this repo against the conventions.    |
-| `wtf`              | Explains the last answer again in simple words.                 |
+| Skill              | Description                                                  |
+|--------------------|--------------------------------------------------------------|
+| `comments-add`     | Adds explanatory comments to code.                           |
+| `comments-remove`  | Deletes the comments from code.                              |
+| `comments-rewrite` | Deletes the comments, then writes new ones.                  |
+| `uninstall-skills` | Removes the skills of this repo from `~/.claude/skills`.     |
+| `update-skills`    | Applies updates to the skills from this repo.                |
+| `validate-skills`  | Checks each `SKILL.md` in this repo against the conventions. |
+| `wtf`              | Explains the last answer again in simple words.              |
 
-### `/comments`
-
-One skill with three modes:
+### The comment skills
 
 ```
-/comments add <file-or-directory | code block>       # write new comments
-/comments remove <file-or-directory | code block>    # delete the comments
-/comments rewrite <file-or-directory | code block>   # delete, then write new ones
+/comments-add <file-or-directory | code block>       # write new comments
+/comments-remove <file-or-directory | code block>    # delete the comments
+/comments-rewrite <file-or-directory | code block>   # delete, then write new ones
 ```
 
-It keeps every comment that a tool or the compiler reads: a `#!` first line, license headers,
-`// swift-tools-version`, build tags, lint directives, and `TODO`, `MARK`, and `FIXME`.
+`comments-remove` and `comments-rewrite` keep every comment that a tool or the compiler reads:
+a `#!` first line, license headers, `// swift-tools-version`, build tags, lint directives,
+and `TODO`, `MARK`, and `FIXME`.
 
 ## License
 

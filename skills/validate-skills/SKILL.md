@@ -45,6 +45,11 @@ Rules for the repository:
 
 16. Each skill folder in the `skills` folder is in `README.md` and in `CLAUDE.md`.
 17. `README.md` and `CLAUDE.md` do not name a skill or a file that does not exist.
+18. The three comment skills share rules. The same rule must have the same text in each file where it occurs. Compare these parts:
+    - `Find the target` and `Find the files`: `comments-add`, `comments-remove`, and `comments-rewrite`. Only the `Usage:` line and the last bullet of item 3 are different.
+    - The delete rules: `comments-remove` (`Task`) and `comments-rewrite` (`Step 1`).
+    - The read rules and the write rules: `comments-add` and `comments-rewrite` (`Step 2` and `Step 3`).
+    These differences are correct: the `Usage:` line, the last bullet of item 3 in `Find the target`, the name of a section, and a rule that applies to one skill only. Show every other difference. A difference in the words, but not in the meaning, is also a problem.
 
 ## Output
 
