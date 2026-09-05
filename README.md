@@ -18,16 +18,24 @@ Call each skill by its name, for example `/wtf`.
 
 ## Skills
 
-| Skill              | Description                                                  |
-|--------------------|--------------------------------------------------------------|
-| `comments-add`     | Adds explanatory comments to code.                           |
-| `comments-remove`  | Deletes the comments from code.                              |
-| `comments-rewrite` | Deletes the comments, then writes new ones.                  |
-| `wtf`              | Explains the last answer again in simple words.              |
+| Skill              | Input                         | Description                                     |
+|--------------------|-------------------------------|-------------------------------------------------|
+| `comments-add`     | File - Directory - Code Block | Adds explanatory comments to code.              |
+| `comments-remove`  | File - Directory - Code Block | Deletes the comments from code.                 |
+| `comments-rewrite` | File - Directory - Code Block | Deletes the comments, then writes new ones.     |
+| `wtf`              | None                          | Explains the last answer again in simple words. |
+
+**Examples:**
+```
+/comments-add Sources/Model.swift     # one file
+/comments-add Sources/Views           # each source file in the directory
+/comments-add <paste the code>        # a block of code
+/wtf                                  # None
+```
 
 
 
-## `skills.sh`
+## skills.sh
 
 > The `skills.sh` only manages skills from this repo. <br>
 > It never touches or deletes any other skill in `~/.claude/skills`. <br>
