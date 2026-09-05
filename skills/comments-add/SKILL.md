@@ -57,7 +57,7 @@ If the code uses an element from a different file, and you cannot understand the
 4. Put the comment on the line above the code. Do not put a comment at the end of a line of code.
 5. Use one-line comments. Use more lines only when this makes the text easier to read.
 6. Do not divide one sentence into more than one line.
-7. For the Swift language, use `//`. Do not use `/* */`. Use `///` only where a `///` comment is there already.
+7. For the Swift language, use `//`. Do not use `/* */`.
 8. For a different language, use the comment style that the file uses already.
 9. Keep the comments that are in the file. If a comment does not agree with the code, do not change it. Put it in the report.
 
